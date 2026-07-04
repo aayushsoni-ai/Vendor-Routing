@@ -1,0 +1,8 @@
+/* Minimal CSS reset — styles are defined in App.css */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0E0F11;
+}
