@@ -5,6 +5,7 @@ import { StatusDot } from '../components/StatusDot';
 
 interface PlaygroundProps {
   apiUrl: string;
+  mockUrl: string;
 }
 
 interface MockStatus {
@@ -19,7 +20,7 @@ interface MockStatus {
   requestsInWindow: number;
 }
 
-export const Playground: React.FC<PlaygroundProps> = ({ apiUrl }) => {
+export const Playground: React.FC<PlaygroundProps> = ({ apiUrl, mockUrl }) => {
   const [capability, setCapability] = useState('PAN_VERIFICATION');
   const [pan, setPan] = useState('ABCDE1234F');
   const [name, setName] = useState('Rahul Sharma');
@@ -40,7 +41,7 @@ export const Playground: React.FC<PlaygroundProps> = ({ apiUrl }) => {
   const fetchMockStatus = async () => {
     try {
       // Mock vendors runs on port 9000 (standard port in scaffold)
-      const res = await fetch(`http://localhost:9000/mock/status`);
+      const res = await fetch(`${mockUrl}/mock/status`);
       if (!res.ok) throw new Error();
       const data = await res.json();
       setMockStatus(data);
@@ -57,13 +58,13 @@ export const Playground: React.FC<PlaygroundProps> = ({ apiUrl }) => {
 
   const handleToggleMock = async (vendorName: string) => {
     try {
-      const res = await fetch(`http://localhost:9000/mock/${vendorName}/toggle-down`, {
+      const res = await fetch(`${mockUrl}/mock/${vendorName}/toggle-down`, {
         method: 'POST',
       });
       if (!res.ok) throw new Error();
       await fetchMockStatus();
     } catch {
-      alert('Could not connect directly to mock vendor simulator on http://localhost:9000');
+      alert(`Could not connect to mock vendor simulator at ${mockUrl}`);
     }
   };
 
@@ -230,7 +231,7 @@ export const Playground: React.FC<PlaygroundProps> = ({ apiUrl }) => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {Object.keys(mockStatus).length === 0 ? (
                 <div style={{ fontSize: '12px', color: 'var(--color-warning)' }}>
-                  Outage simulator offline (Is mock-vendors running on http://localhost:9000?)
+                  Outage simulator offline (Is mock-vendors running at {mockUrl}?)
                 </div>
               ) : (
                 Object.keys(mockStatus).map(name => {

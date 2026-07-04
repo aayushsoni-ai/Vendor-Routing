@@ -18,9 +18,10 @@ interface Vendor {
 
 interface VendorsProps {
   apiUrl: string;
+  mockUrl: string;
 }
 
-export const Vendors: React.FC<VendorsProps> = ({ apiUrl }) => {
+export const Vendors: React.FC<VendorsProps> = ({ apiUrl, mockUrl }) => {
   const [vendors, setVendors] = useState<Vendor[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -30,7 +31,7 @@ export const Vendors: React.FC<VendorsProps> = ({ apiUrl }) => {
   const [editingVendor, setEditingVendor] = useState<Vendor | null>(null);
   const [name, setName] = useState('');
   const [capability, setCapability] = useState('PAN_VERIFICATION');
-  const [baseUrl, setBaseUrl] = useState('http://localhost:9000');
+  const [baseUrl, setBaseUrl] = useState(mockUrl);
   const [priority, setPriority] = useState(1);
   const [weight, setWeight] = useState(50);
   const [costPerRequest, setCostPerRequest] = useState(1.0);

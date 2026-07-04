@@ -8,6 +8,7 @@ import { Agent } from './pages/Agent';
 import './App.css';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const MOCK_URL = import.meta.env.VITE_MOCK_URL || 'http://localhost:9000';
 
 type Page = 'vendors' | 'metrics' | 'logs' | 'playground' | 'agent';
 
@@ -17,13 +18,13 @@ const App: React.FC = () => {
   const renderPage = () => {
     switch (activePage) {
       case 'vendors':
-        return <Vendors apiUrl={API_URL} />;
+        return <Vendors apiUrl={API_URL} mockUrl={MOCK_URL} />;
       case 'metrics':
         return <Metrics apiUrl={API_URL} />;
       case 'logs':
         return <Logs apiUrl={API_URL} />;
       case 'playground':
-        return <Playground apiUrl={API_URL} />;
+        return <Playground apiUrl={API_URL} mockUrl={MOCK_URL} />;
       case 'agent':
         return <Agent apiUrl={API_URL} />;
       default:
