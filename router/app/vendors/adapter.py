@@ -9,6 +9,7 @@ routing engine.
 
 import time
 
+# pyrefly: ignore [missing-import]
 import httpx
 
 from app.exceptions import VendorError, VendorTimeoutError
@@ -70,6 +71,17 @@ class VendorAdapter:
         Convention: mock vendors expose POST /<capability_path>/<vendor_name>
         e.g. http://mock-vendors:9000/pan/verify/VendorA
         """
+        from app.config import settings
+
+        # If the database contains a default local base URL, but a custom/production
+        # base URL is configured in settings, use the configured one instead.
+        if (
+            base_url in ("http://mock-vendors:9000", "http://localhost:9000", "http://127.0.0.1:9000")
+            and settings.MOCK_VENDOR_BASE_URL
+            and settings.MOCK_VENDOR_BASE_URL != base_url
+        ):
+            base_url = settings.MOCK_VENDOR_BASE_URL
+
         capability_path = {
             "PAN_VERIFICATION": "/pan/verify",
             "OCR": "/ocr/extract",

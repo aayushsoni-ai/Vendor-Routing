@@ -52,7 +52,7 @@ async def init_db() -> None:
                     VendorRow(
                         name="VendorA",
                         capability="PAN_VERIFICATION",
-                        base_url="http://mock-vendors:9000",
+                        base_url=settings.MOCK_VENDOR_BASE_URL,
                         priority=1,
                         weight=70,
                         cost_per_request=1.5,
@@ -64,7 +64,7 @@ async def init_db() -> None:
                     VendorRow(
                         name="VendorB",
                         capability="PAN_VERIFICATION",
-                        base_url="http://mock-vendors:9000",
+                        base_url=settings.MOCK_VENDOR_BASE_URL,
                         priority=2,
                         weight=30,
                         cost_per_request=1.2,
@@ -76,7 +76,7 @@ async def init_db() -> None:
                     VendorRow(
                         name="VendorC",
                         capability="PAN_VERIFICATION",
-                        base_url="http://mock-vendors:9000",
+                        base_url=settings.MOCK_VENDOR_BASE_URL,
                         priority=3,
                         weight=0,
                         cost_per_request=1.0,
