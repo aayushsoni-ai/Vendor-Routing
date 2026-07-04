@@ -1,0 +1,18 @@
+{
+  "status": "SUCCESS",
+  "requestId": "b1f7e3a2-4d5c-4b8a-9c1d-2e3f4a5b6c7d",
+  "capability": "PAN_VERIFICATION",
+  "vendorUsed": "VendorB",
+  "routingReason": "VendorB selected after failover (VendorA timed out (2001ms)). Excluded: VendorC (p95 latency 2500ms exceeds threshold 2000ms)",
+  "strategyUsed": "weighted",
+  "latencyMs": 850,
+  "cost": 1.2,
+  "attempts": [
+    { "vendor": "VendorA", "outcome": "TIMEOUT", "latencyMs": 2001 },
+    { "vendor": "VendorB", "outcome": "SUCCESS", "latencyMs": 850 }
+  ],
+  "response": {
+    "panStatus": "VALID",
+    "nameMatch": true
+  }
+}

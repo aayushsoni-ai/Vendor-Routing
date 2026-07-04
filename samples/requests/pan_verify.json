@@ -1,0 +1,11 @@
+{
+  "capability": "PAN_VERIFICATION",
+  "payload": {
+    "pan": "ABCDE1234F",
+    "name": "Rahul Sharma"
+  },
+  "requirements": {
+    "maxLatencyMs": 2000,
+    "preferLowCost": true
+  }
+}

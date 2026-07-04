@@ -1,0 +1,43 @@
+{
+  "capability": "PAN_VERIFICATION",
+  "strategy": "weighted",
+  "failover": true,
+  "vendors": [
+    {
+      "name": "VendorA",
+      "capability": "PAN_VERIFICATION",
+      "baseUrl": "http://mock-vendors:9000",
+      "priority": 1,
+      "weight": 70,
+      "costPerRequest": 1.5,
+      "timeoutMs": 2000,
+      "rateLimitPerMinute": 100,
+      "supportedFeatures": ["nameMatch", "dobMatch"],
+      "enabled": true
+    },
+    {
+      "name": "VendorB",
+      "capability": "PAN_VERIFICATION",
+      "baseUrl": "http://mock-vendors:9000",
+      "priority": 2,
+      "weight": 30,
+      "costPerRequest": 1.2,
+      "timeoutMs": 3000,
+      "rateLimitPerMinute": 50,
+      "supportedFeatures": ["nameMatch"],
+      "enabled": true
+    },
+    {
+      "name": "VendorC",
+      "capability": "PAN_VERIFICATION",
+      "baseUrl": "http://mock-vendors:9000",
+      "priority": 3,
+      "weight": 0,
+      "costPerRequest": 1.0,
+      "timeoutMs": 2500,
+      "rateLimitPerMinute": 30,
+      "supportedFeatures": ["nameMatch"],
+      "enabled": true
+    }
+  ]
+}
