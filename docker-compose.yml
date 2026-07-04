@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  router:
+    build: ./router
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite+aiosqlite:///./vendor_routing.db
+      - MOCK_VENDOR_BASE_URL=http://mock-vendors:9000
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+    depends_on:
+      - mock-vendors
+    volumes:
+      - ./router/app:/app/app  # hot-reload during development
+
+  mock-vendors:
+    build: ./mock-vendors
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./mock-vendors:/app  # hot-reload
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - router
+    environment:
+      - VITE_API_URL=http://localhost:8000

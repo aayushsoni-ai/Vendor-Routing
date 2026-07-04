@@ -1,0 +1,12 @@
+.venv/
+.agents/
+__pycache__/
+*.pyc
+*.pyo
+*.db
+.env
+node_modules/
+dist/
+.DS_Store
+*.egg-info/
+AI_USAGE.md
