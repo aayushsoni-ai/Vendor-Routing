@@ -1,0 +1,23 @@
+{
+  "VendorA": {
+    "baseLatencyMs": 400,
+    "jitterMs": 200,
+    "errorRate": 0.02,
+    "supports": ["nameMatch", "dobMatch"],
+    "rateLimitPerMinute": 100
+  },
+  "VendorB": {
+    "baseLatencyMs": 900,
+    "jitterMs": 300,
+    "errorRate": 0.05,
+    "supports": ["nameMatch"],
+    "rateLimitPerMinute": 50
+  },
+  "VendorC": {
+    "baseLatencyMs": 250,
+    "jitterMs": 150,
+    "errorRate": 0.10,
+    "supports": ["nameMatch"],
+    "rateLimitPerMinute": 30
+  }
+}
