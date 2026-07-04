@@ -8,9 +8,19 @@ is small enough that SQLite's write-lock isn't a bottleneck.
 """
 
 # pyrefly: ignore [missing-import]
+import os
+# pyrefly: ignore [missing-import]
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from app.config import settings
+
+# Automatically create missing parent directories for SQLite databases to prevent "unable to open database file" errors
+if settings.DATABASE_URL.startswith("sqlite"):
+    db_path = settings.DATABASE_URL.split(":///")[-1]
+    if db_path:
+        db_dir = os.path.dirname(db_path)
+        if db_dir:
+            os.makedirs(db_dir, exist_ok=True)
 
 engine = create_async_engine(
     settings.DATABASE_URL,
