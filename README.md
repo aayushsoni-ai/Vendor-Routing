@@ -59,19 +59,14 @@ graph TD
 
 The entire system is containerized and can be booted in seconds. Ensure Docker Desktop is running.
 
-### 1. Configure the Environment
-Create a `.env` file in the root directory:
-```env
-# Required only for AI Copilot features. If blank, Copilot runs in fallback mock mode.
-ANTHROPIC_API_KEY=your-api-key-here
-```
 
-### 2. Boot the Containers
+
+### 1. Boot the Containers
 ```bash
 docker compose up --build
 ```
 
-### 3. Ports & Service Access
+### 2. Ports & Service Access
 Once the containers are healthy, open these URLs in your browser:
 * **Frontend Console**: [http://localhost:5173](http://localhost:5173)
 * **Router Gateway API Docs**: [http://localhost:8000/docs](http://localhost:8000/docs)
