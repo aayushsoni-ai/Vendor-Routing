@@ -84,7 +84,7 @@ Exposes the mock providers on port `9000`:
 cd mock-vendors
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install fastapi "uvicorn[standard]" 
 uvicorn app:app --port 9000 --reload
 ```
 
@@ -198,9 +198,9 @@ pytest -v
 
 ---
 
-## 🎤 Interview Demo Guide & Walkthrough
+## Walkthrough
 
-If you are demoing this project to an interviewer, run through this script to showcase the core architectural features step-by-step:
+Run through this script to showcase the core architectural features step-by-step:
 
 ### Step 1: Show Dynamic Configuration Sync
 1. Open the **Upstream Providers** page in the console.
